@@ -1,0 +1,87 @@
+
+body{
+    margin:0px;
+    padding:0px;
+    height:100%;
+    width:100%;
+    background-color: #fff
+}
+
+.parallax{
+    background:url("https://cdn.vox-cdn.com/thumbor/WWA3k4dgbuIF7GPYNY6x0Nbs2CA=/0x0:1280x720/1820x1213/filters:focal(538x258:742x462)/cdn.vox-cdn.com/uploads/chorus_image/image/59771995/no_mans_sky_multiplayer.1526599545.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 300px;
+} 
+
+.header_wrapper{
+    background:transparent;
+}
+
+.social-list-color a{
+    width:36px;
+    height:36px;
+    padding-top:0.2rem;
+    display:inline-block;
+    text-align:center;
+    border-radius:4px;
+    transition:all 0.4s ease-in-out;
+    color:#ffff;
+    font-size:1.25rem
+}@media (prefers-reduced-motion: reduce)
+{
+    .social-list-color a{
+        transition:none
+    }
+}
+.social-list-color a.twitter{
+    background-color:#1DA1F2
+}
+.social-list-color a.twitter:hover{
+    background-color:#0c85d0
+}
+.social-list-color a.facebook{
+    background-color:#3b5998
+}
+.social-list-color a.facebook:hover{
+    background-color:#2d4373
+}
+.social-list-color a.github{
+    background-color:#ff0000
+}
+.social-list-color a.github:hover{
+    background-color:#ff0000
+}
+.social-list-color a.stack-overflow{
+    background-color:#F3A83B
+}
+.social-list-color a.stack-overflow:hover{
+    background-color:#ed920e
+}
+.social-list-color a.linkedin{
+    background-color:#0077B5
+}
+.social-list-color a.linkedin:hover{
+    background-color:#005582
+}
+.social-list-color a.codepen{
+    background-color:#000
+}
+.social-list-color a.codepen:hover{
+    background-color:#000
+}
+.social-list-color a.instagram{
+    background-color:#BC296D
+}
+.social-list-color a.instagram:hover{
+    background-color:#922055
+}
+.social-list-color a.medium{
+    background-color:#02B875
+}
+.social-list-color a.medium:hover{
+    background-color:#018655
+}
+
+

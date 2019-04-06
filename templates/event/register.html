@@ -1,0 +1,293 @@
+{% extends 'base.html' %}
+{% block content %}
+<section>
+    <h1 class="text-center" style="margin-top:100px;">Event Registration Form</h1><br />
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-light text-center" role="alert">
+        {{message}}
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div class="row border mr-auto ml-auto mt-0 mb-4 rounded" style="width: 750px;">
+        <form class="col m-4" action="{% url 'register'%}" name="form" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="full name">Event Name</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        {{ form.title }}
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="full name">Full Name</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        {{ form.fullname }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="id_email">Email</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-at"></i></span>
+                        </div>
+                        {{ form.email }}
+                    </div>
+                    {% if form.email.errors %}
+                    <p class="text-danger">
+                        <small>{{ form.email.errors }}</small>
+                    </p>
+                    {% endif %}
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="id_email">Contact</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-phone-volume"></i></span>
+                        </div>
+                        {{ form.contact }}
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="squadName">Squad Name</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fab fa-teamspeak"></i></span>
+                        </div>
+                        {{ form.squadname }}
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="id_username">Members</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-user-ninja"></i></span>
+                        </div>
+                        {{ form.membernumber }}
+                    </div>
+                    <p id="print"></p>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col border rounded mx-3" style="height:250px;">
+                        <h6 class="my-3 pl-0">Member Info</h6>
+                        <ul class="nav nav-tabs" style="display:none;">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#solo">One</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#dual">Two</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#squad1">Three</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#squad2">Four</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" style="display:none;">
+                            <div id="solo" class="container tab-pane active border"><br>
+                                <div class="row p-2">
+                                    <div class="col-md-6 form-group text-center">
+                                        <label for="Username">Username</label>
+                                        <!-- <input type="text" class="form-control" id="p1name" placeholder="Username"> -->
+                                        {{ form.p1name }}
+                                    </div>
+                                    <div class="form-group col-md-6 text-center">
+                                        <label for="UserId">User Id</label>
+                                        <!-- <input type="text" class="form-control" id="p1id" placeholder="User Id"> -->
+                                        {{ form.p1userid }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="dual" class="container tab-pane border fade"><br>
+                                <div class="row p-2">
+                                    <div class="col-md-6 form-group text-center">
+                                        <label for="Username">Username</label>
+                                        <!-- <input type="text" class="form-control" id="p2name" placeholder="Username"> -->
+                                        {{ form.p2name }}
+                                    </div>
+                                    <div class="form-group col-md-6 text-center">
+                                        <label for="UserId">User Id</label>
+                                        <!-- <input type="text" class="form-control" id="p2id" placeholder="User Id"> -->
+                                        {{ form.p2userid }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="squad1" class="container tab-pane border fade"><br>
+                                <div class="row p-2">
+                                    <div class="col-md-6 form-group text-center">
+                                        <label for="Username">Username</label>
+                                        <!-- <input type="text" class="form-control" id="p3name" placeholder="Username"> -->
+                                        {{ form.p3name }}
+                                    </div>
+                                    <div class="form-group col-md-6 text-center">
+                                        <label for="UserId">User Id</label>
+                                        <!-- <input type="text" class="form-control" id="p3id" placeholder="User Id"> -->
+                                        {{ form.p3userid }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="squad2" class="container tab-pane border fade"><br>
+                                <div class="row p-2">
+                                    <div class="col-md-6 form-group text-center">
+                                        <label for="Username" class="label">Username</label>
+                                        <!-- <input type="text" class="form-control " id="p4name" placeholder="Username"> -->
+                                        {{ form.p4name }}
+                                    </div>
+                                    <div class="form-group col-md-6 text-center">
+                                        <label for="UserId">User Id</label>
+                                        <!-- <input type="text" class="form-control" id="p4id" placeholder="User Id"> -->
+                                        {{ form.p4userid }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p class="alert" id="btn-error"> 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" style="width:auto;" id="invalidCheck"
+                        required>
+                    <label class="form-check-label" for="invalidCheck">
+                        Agree to terms and conditions <a href="">Click Here...!</a>
+                    </label>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div>
+                    <input type="submit" class="btn btn-success" id="cretae" value="Create">
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $('#id_membernumber').change(function () {
+            var value = $(this).val();
+            console.log(value);
+            if (value == "") {
+                $('ul').css("display", "none");
+                $('.tab-content').css("display", "none");
+                $('.tab-content input').val('');
+            } else if (value == "solo") {
+                $('ul').css("display", "flex");
+                $('.tab-content').css("display", "block");
+                $('.nav-tabs a[href="#solo"]').tab('show')
+                $('.nav-tabs a[href="#dual"]').hide();
+                $('.nav-tabs a[href="#squad1"]').hide();
+                $('.nav-tabs a[href="#squad2"]').hide();
+                $('#id_p1name').attr("required", "True");
+                $('#id_p1userid').attr("required", "True");
+                $('#id_p2name').val('');
+                $('#id_p2userid').val('');
+                $('#id_p3name').val('');
+                $('#id_p3userid').val('');
+                $('#id_p4name').val('');
+                $('#id_p4userid').val('');
+            } else if (value == "dual") {
+                $('ul').css("display", "flex");
+                $('.tab-content').css("display", "block");
+                $('.nav-tabs a[href="#solo"]').tab('show');
+                $('.nav-tabs a[href="#dual"]').show();
+                $('.nav-tabs a[href="#squad1"]').hide();
+                $('.nav-tabs a[href="#squad2"]').hide();
+                $('#id_p1name').attr("required", "True");
+                $('#id_p1userid').attr("required", "True");
+                $('#id_p2name').attr("required", "True");
+                $('#id_p2userid').attr("required", "True");
+                $('#id_p3name').val('');
+                $('#id_p3userid').val('');
+                $('#id_p4name').val('');
+                $('#id_p4userid').val('');
+            } else {
+                $('ul').css("display", "flex");
+                $('.tab-content').css("display", "block");
+                $('.nav-tabs a[href="#solo"]').tab('show');
+                $('.nav-tabs a[href="#dual"]').show();
+                $('.nav-tabs a[href="#squad1"]').show();
+                $('.nav-tabs a[href="#squad2"]').show();
+                $('#id_p1name').attr("required", "True");
+                $('#id_p1userid').attr("required", "True");
+                $('#id_p2name').attr("required", "True");
+                $('#id_p2userid').attr("required", "True");
+                $('#id_p3name').attr("required", "True");
+                $('#id_p3userid').attr("required", "True");
+                $('#id_p4name').attr("required", "True");
+                $('#id_p4userid').attr("required", "True");
+            }
+
+        });
+
+        $(".nav-tabs li:eq(0) a").click(function () {
+            $('.nav-tabs li:eq(0) a').tab('show')
+        });
+        $(".nav-tabs li:eq(1) a").click(function () {
+            var p1name = $('#id_p1name').val()
+            var p1id = $('#id_p1userid').val()
+            if (p1name != '' && p1id != '') {
+
+                $('.nav-tabs li:eq(1) a').tab('show')
+            }
+
+        });
+        $(".nav-tabs li:eq(2) a").click(function () {
+            var p1name = $('#id_p1name').val()
+            var p1id = $('#id_p1userid').val()
+            var p2name = $('#id_p2name').val()
+            var p2id = $('#id_p2userid').val()
+
+            if (p1name != '' && p2name != '' && p1id != '' && p2id != '') {
+                $('.nav-tabs li:eq(2) a').tab('show')
+            }
+
+        });
+        $(".nav-tabs li:eq(3) a").click(function () {
+            var p1name = $('#id_p1name').val()
+            var p1id = $('#id_p1userid').val()
+            var p2name = $('#id_p2name').val()
+            var p2id = $('#id_p2userid').val()
+            var p3name = $('#id_p3name').val()
+            var p3id = $('#id_p3userid').val()
+
+            if (p1name != '' && p2name != '' && p1id != '' && p2id != '' && p3name!='' && p3id!='') {
+                $('.nav-tabs li:eq(3) a').tab('show')
+            }      
+        });
+        
+    });
+
+</script>
+
+
+{% endblock %}

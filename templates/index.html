@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container mt-3">
+        <select name="member" id="select">
+            <option value="">Select</option>
+            <option value="solo">Solo</option>
+            <option value="dual">Dual</option>
+            <option value="Squad">Squad</option>
+        </select>
+
+        <br>
+        <!-- Nav tabs -->
+
+
+        <!-- Tab panes -->
+
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col border rounded mx-3">
+                <h6 class="my-3 pl-0">Member Info</h6>
+                <ul class="nav nav-tabs" style="display:none;">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#solo">One</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#dual">Two</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#squad1">Three</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#squad2">Four</a>
+                    </li>
+                </ul>
+                <div class="tab-content" style="display:none;">
+                    <div id="solo" class="container tab-pane active"><br>
+                        <h3 class="text-center mb-3 bg-secondary">Player One</h3>
+                        <div class="row p-2">
+                            <div class="col-md-6 form-group text-center">
+                                <label for="Username">Username</label>
+                                <!-- <input type="text" class="form-control" id="p1name" placeholder="Username"> -->
+                                {{ form.p1name }}
+                            </div>
+                            <div class="form-group col-md-6 text-center">
+                                <label for="UserId">User Id</label>
+                                <!-- <input type="text" class="form-control" id="p1id" placeholder="User Id"> -->
+                                {{ form.p1userid }}
+                            </div>
+                        </div>
+                    </div>
+                    <div id="dual" class="container tab-pane fade"><br>
+                        <h3 class="text-center mb-3 bg-secondary">Player Two</h3>
+                        <div class="row">
+                            <div class="col-md-6 form-group text-center">
+                                <label for="Username">Username</label>
+                                <!-- <input type="text" class="form-control" id="p2name" placeholder="Username"> -->
+                                {{ form.p2name }}
+                            </div>
+                            <div class="form-group col-md-6 text-center">
+                                <label for="UserId">User Id</label>
+                                <!-- <input type="text" class="form-control" id="p2id" placeholder="User Id"> -->
+                                {{ form.p2userid }}
+                            </div>
+                        </div>
+                    </div>
+                    <div id="squad1" class="container tab-pane fade"><br>
+                        <h3 class="text-center mb-3 bg-secondary">Player Three</h3>
+                        <div class="row p-2">
+                            <div class="col-md-6 form-group text-center">
+                                <label for="Username">Username</label>
+                                <!-- <input type="text" class="form-control" id="p3name" placeholder="Username"> -->
+                                {{ form.p3name }}
+                            </div>
+                            <div class="form-group col-md-6 text-center">
+                                <label for="UserId">User Id</label>
+                                <!-- <input type="text" class="form-control" id="p3id" placeholder="User Id"> -->
+                                {{ form.p3userid }}
+                            </div>
+                        </div>
+                    </div>
+                    <div id="squad2" class="container tab-pane fade"><br>
+                        <h3 class="text-center mb-3 bg-secondary">Player Four</h3>
+                        <div class="row">
+                            <div class="col-md-6 form-group text-center">
+                                <label for="Username" class="label">Username</label>
+                                <!-- <input type="text" class="form-control " id="p4name" placeholder="Username"> -->
+                                {{ form.p4name }}
+                            </div>
+                            <div class="form-group col-md-6 text-center">
+                                <label for="UserId">User Id</label>
+                                <!-- <input type="text" class="form-control" id="p4id" placeholder="User Id"> -->
+                                {{ form.p4userid }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // $('ul').css("display", "flex");
+            // $('.tab-content').css("display", "block");
+            $('#select').change(function () {
+                var value = $(this).val();
+                console.log(value);
+                if (value == "") {
+                    $('ul').css("display", "none");
+                    $('.tab-content').css("display", "none");
+                    $('input').val('');
+                } else if (value == "solo") {
+                    $('ul').css("display", "flex");
+                    $('.tab-content').css("display", "block");
+                    $('.nav-tabs a[href="#solo"]').tab('show')
+                    $('.nav-tabs a[href="#dual"]').hide();
+                    $('.nav-tabs a[href="#squad1"]').hide();
+                    $('.nav-tabs a[href="#squad2"]').hide();
+                    $('#p2name').val('');
+                    $('#p2id').val('');
+                    $('#p3name').val('');
+                    $('#p3id').val('');
+                    $('#p4name').val('');
+                    $('#p4id').val('');
+                } else if (value == "dual") {
+                    $('ul').css("display", "flex");
+                    $('.tab-content').css("display", "block");
+                    $('.nav-tabs a[href="#solo"]').tab('show');
+                    $('.nav-tabs a[href="#dual"]').show();
+                    $('.nav-tabs a[href="#squad1"]').hide();
+                    $('.nav-tabs a[href="#squad2"]').hide();
+                    $('#p3name').val('');
+                    $('#p3id').val('');
+                    $('#p4name').val('');
+                    $('#p4id').val('');
+                } else {
+                    $('ul').css("display", "flex");
+                    $('.tab-content').css("display", "block");
+                    $('.nav-tabs a[href="#solo"]').tab('show');
+                    $('.nav-tabs a[href="#dual"]').show();
+                    $('.nav-tabs a[href="#squad1"]').show();
+                    $('.nav-tabs a[href="#squad2"]').show();
+                }
+            });
+
+            $(".nav-tabs li:eq(0) a").click(function () {
+                $('.nav-tabs li:eq(0) a').tab('show')
+            });
+            $(".nav-tabs li:eq(1) a").click(function () {
+                $('.nav-tabs li:eq(1) a').tab('show')
+            });
+            $(".nav-tabs li:eq(2) a").click(function () {
+                $('.nav-tabs li:eq(2) a').tab('show')
+            });
+            $(".nav-tabs li:eq(3) a").click(function () {
+                $('.nav-tabs li:eq(3) a').tab('show')
+            });
+
+        });
+    </script>
+
+
+</body>
+
+</html>

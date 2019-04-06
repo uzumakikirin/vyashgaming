@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header%}
+{% endblock %}
+{% block content%}
+<main>
+	<div class="album bg-transparent">
+		<div class="container">
+			<div class="row mt-5 mb-2">
+				<div class="col-md-12">
+					<h3 style="color:crimson;">Events</h3>
+					<hr class="bg-dark">
+				</div>
+			</div>
+			<div class="row mb-4">
+				{% for event in events %}
+				<div class="col-md-4 mb-2">
+					<div class="card">
+						<img src ="{{ event.photo.url }}" class="card-img-top" alt="winner winner chicken dinner">
+						<div class="card-body">
+							<h5 class="card-title">{{event.title|capfirst}}</h5>
+							{{event.image.url}}
+							<p class="card-text mb-2 text-muted">Created BY {{event.organized_by}}</p>
+							<p class="card-text">{{event.shortDetails}}</p>
+							<p class="card-text"> Registration Fee : Rs. {{event.fee}}</p>
+							<p class="card-text"> Winner Price : Rs. {{event.fee}}</p>
+							<p class="card-text"> Ends at : {{event.pub_date_pretty}}</p>
+							<p class="card-text"> Status : {{event.status}}</p>
+
+						</div>
+						<div class="card-body text-center btn btn-success">
+							<a href="{% url 'eventdetail' event.id %}" class="card-link text-white">
+                                Click to Continue Here ..
+                            </a>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			<hr class="bg-dark">
+		</div>
+	</div>
+</main>
+{% endblock %}
